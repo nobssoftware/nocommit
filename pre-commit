@@ -1,9 +1,9 @@
 #!/bin/sh
 
-set -u -o pipefail
+set -e
  
 git diff --cached | grep -q '^\+.*NOCOMMIT'
-if [ "$?" == "0" ]; then
+if [ "$?" = "0" ]; then
     echo "Adding line containing NOCOMMIT"
     exit 1
 fi
