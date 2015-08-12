@@ -1,7 +1,8 @@
 #!/bin/sh
 
-git diff --cached | grep -q '^\+.*NOCOMMIT'
+git diff --cached | grep '^[+d].*NOCOMMIT'
 if [ "$?" = "0" ]; then
+    echo
     echo "Adding line containing NOCOMMIT"
     exit 1
 fi
