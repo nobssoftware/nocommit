@@ -16,10 +16,8 @@
 # chmod +x pre-commit
 #
 
-git diff --cached | grep '^[+d].*NOCOMMIT'
-if [ "$?" = "0" ]; then
+if git diff --cached | grep '^[+d].*NOCOMMIT'; then
     echo
     echo "Adding line containing NOCOMMIT"
     exit 1
 fi
-
