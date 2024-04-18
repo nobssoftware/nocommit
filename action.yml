@@ -1,0 +1,6 @@
+# action.yml
+name: 'Nocommit detector'
+description: 'Fail if the string nocommit or nomerge was found in the source'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
