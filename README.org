@@ -21,6 +21,15 @@ mul(int x, int y)
 }
 #+end_src
 
+Trying to commit this will raise an error:
+
+#+begin_example
+$ git commit -va
++  printf("debug: mul(%d, %d) called", x, y) // NOCOMMIT
+
+Adding line containing NOCOMMIT. To ignore, use git commit --no-verify
+$
+#+end_example
 
 The GitHub action is optional if you use the pre-commit hook.
 
