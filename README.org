@@ -1,24 +1,8 @@
-* NOCOMMIT and NOMERGE flags
+* NOCOMMIT Action and Git hook
 
-GitHub Action to detect a NOMERGE and a NOCOMMIT flag in your code.
+GitHub Action and git pre-commit hook to detect a =NOMERGE= and a =NOCOMMIT= flag in your code.
 
 Add those markers anywhere in a comment or in a debug printf to avoid accidentally merging temporary code to production.
-
-Add the following GitHub action:
-
-#+begin_src yaml
-on:
-  - pull_request
-
-name: Syntax
-jobs:
-  nocommit:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: "nocommit checker"
-        uses: nobssoftware/nocommit@v1
-#+end_src
 
 ** NOCOMMIT
 
@@ -37,6 +21,30 @@ mul(int x, int y)
 }
 #+end_src
 
+
+The GitHub action is optional if you use the pre-commit hook.
+
 ** NOMERGE
 
 Same as NOCOMMIT, but it won’t trip up that =pre-commit= hook. Use this for changes you want to push to CI, but not merge to master. This is useful for debugging CI or for testing something on deployed infra.
+
+This only works if you have the GitHub Action installed, regardless of the pre-commit hook.
+
+** GitHub Action
+
+To automatically detect this in any PR on GitHub, add the following GitHub action:
+
+#+begin_src yaml
+on:
+  - pull_request
+
+name: Syntax
+jobs:
+  nocommit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: "nocommit checker"
+        uses: nobssoftware/nocommit@v1
+#+end_src
+
