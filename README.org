@@ -19,3 +19,24 @@ jobs:
       - name: "nocommit checker"
         uses: nobssoftware/nocommit@v1
 #+end_src
+
+** NOCOMMIT
+
+Use this for code you don’t even wish to commit. Anything you never want to see on CI, e.g. temporary credentials, local dev setup, etc.
+
+You can add a git =pre-commit= hook to help you catch any accidental commits, see the [[pre-commit]] file.
+
+Example:
+
+#+begin_src c
+static int
+mul(int x, int y)
+{
+  printf("debug: mul(%d, %d) called", x, y) // NOCOMMIT
+  return x * y;
+}
+#+end_src
+
+** NOMERGE
+
+Same as NOCOMMIT, but it won’t trip up that =pre-commit= hook. Use this for changes you want to push to CI, but not merge to master. This is useful for debugging CI or for testing something on deployed infra.
