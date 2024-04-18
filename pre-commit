@@ -12,7 +12,7 @@
 # mkdir -p "$HOME/.git_template/hooks"
 # git config --global init.templatedir "$HOME/.git_template"
 # cd "$HOME/.git_template/hooks"
-# wget https://gist.githubusercontent.com/hraban/10c7f72ba6ec55247f2d/raw/pre-commit
+# wget https://raw.githubusercontent.com/nobssoftware/nocommit/master/pre-commit
 # chmod +x pre-commit
 #
 
