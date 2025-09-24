@@ -1,6 +1,11 @@
 # action.yml
 name: 'Nocommit detector'
 description: 'Fail if the string nocommit or nomerge was found in the source'
+branding:
+  icon: 'alert-octagon'
+  color: 'yellow'
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: 'composite'
+  steps:
+    - run: "${{ github.action_path }}/gh-action-nomerge.sh"
+      shell: bash
