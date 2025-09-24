@@ -54,7 +54,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: "nocommit checker"
-        uses: nobssoftware/nocommit@v2
+        uses: nobssoftware/nocommit@v3
 #+end_src
 
 ** License (GPLv3)
