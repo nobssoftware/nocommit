@@ -1,0 +1,16 @@
+name: "CI"
+
+"on":
+  pull_request: {}
+  push:
+    branches: ["**"]
+    tags: ["**"]
+
+jobs:
+  nix-flake-check:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: nixbuild/nix-quick-install-action@v34
+      - run: nix flake check
